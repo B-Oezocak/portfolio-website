@@ -3,6 +3,8 @@
 html {
   font-size: 100%;
   box-sizing: border-box;
+
+  scroll-behavior: smooth;
 }
 
 body {
@@ -215,6 +217,8 @@ li.contact {
   padding: 1rem 1rem;
   text-decoration: none;
   font-size: 1.1rem;
+  
+  scroll-behavior: smooth;
 }
 
 /* Change the color of links on hover */
@@ -287,7 +291,11 @@ li.contact {
 
 
 
-
+@media (prefers-reduced-motion: reduce) {
+  html {
+		scroll-behavior: auto;
+  }
+}
 
 @media (max-width: 402px) {
   .nav-grid {
