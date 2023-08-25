@@ -40,35 +40,39 @@ body {
     "footer footer footer footer footer footer footer footer footer footer footer footer";
 }
 
-
 header {
-  margin: 0;
-  width: 100%;
   grid-area: header;
-}
 
-.navbar {
-  /* Keep navigation bar at top */
-  grid-area: navbar;
-  position: sticky;
-  top: 0;
+  width: 100%;
+  height: min-content;
+
+  margin: 0;
+  padding: 0;
+
+  /* Separate navbar from main */
+  border-bottom: 1px solid black;
 
   /* Add a lightgray background color to the top navigation */
   background-color: lightgray;
   overflow: hidden;
-
-  /* Separate navbar from main */
-  border-bottom: 1px solid black;
 }
 
 /* Create grid for navbar */
 .nav-grid {
+  /* Keep navigation bar at top 
+  grid-area: navbar;
+  position: sticky;
+  top: 0;*/
+  grid-area: navbar;
+  
   display: grid;
   gap: 0 0.5rem;
   
   width: 100%;
 
-  padding: 0 30px;
+  padding: 0;
+  margin:0;
+
   grid-template-columns: max-content auto max-content;
   grid-template-areas: "logo mode nav";
 }
@@ -279,14 +283,14 @@ li.contact {
   text-align: center;
   margin: 0;
   margin-top: auto;
-  padding: 0 30px;
+  padding: 0;
 
   border-top: 1px solid black;
 }
 
 .main-footer .copyright p {
   margin: 0;
-  padding: 16px;
+  padding: 16px 0;
 }
 
 
@@ -297,9 +301,13 @@ li.contact {
   }
 }
 
-@media (max-width: 402px) {
+@media (max-width: 599px) {
+  header .navbar {
+    width: 100%;
+    margin: 0 16px;
+  }
+
   .nav-grid {
-    padding: 0 16px;
     grid-template-columns: auto;
     grid-template-areas: 
     "logo"
@@ -324,7 +332,9 @@ li.contact {
   }
 
   .main-grid {
+    width: 100%;
     margin: 0 16px;
+    justify-content: center;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       "profile-pic profile-pic profile-pic profile-pic"
@@ -333,11 +343,20 @@ li.contact {
       "skills skills skills skills"
       "contact contact contact contact";
   }
+
+  .main-footer .copyright {
+    width: 100%;
+    padding: 0 16px;
+  }
 }
 
-@media (min-width: 403px) {
+@media (min-width: 600px) and (max-width: 904px) {
+  header .navbar {
+    width: auto;
+    margin: 0 32px;
+  }
+
   .nav-grid {
-    padding: 0 16px;
     grid-template-columns: auto;
     grid-template-areas: 
     "logo mode"
@@ -350,38 +369,16 @@ li.contact {
 
   .navbar .nav {
     justify-self: center;
+    
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
   }
 
   .main-grid {
-    margin: 0 16px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas:
-      "about about profile-pic profile-pic"
-      "projects projects projects projects"
-      "skills skills skills skills"
-      "contact contact contact contact";
-  }
-}
-
-@media (min-width: 600px) {
-  .nav-grid {
-    padding: 0 16px;
-    grid-template-columns: auto;
-    grid-template-areas: 
-    "logo mode"
-    "nav nav";
-  }
-
-  .navbar .mode {
-    justify-self: end;
-  }
-
-  .navbar .nav {
-    justify-self: center;
-  }
-
-  .main-grid {
-    margin: 0 16px;
+    width: auto;
+    margin: 0 32px;
     grid-template-columns: repeat(8, 1fr);
     grid-template-areas:
     "about about about about about about  profile-pic profile-pic"
@@ -389,11 +386,20 @@ li.contact {
     "skills skills skills skills skills skills skills skills"
     "contact contact contact contact contact contact contact contact";
   }
+
+  .main-footer .copyright {
+    width: auto;
+    margin: 0 32px;
+  }
 }
 
-@media (min-width: 747px) {
+@media (min-width: 905px) {
+  header .navbar {
+    width: 840px;
+    margin: 0 auto;
+  }
+
   .nav-grid {
-    padding: 0 30px;
     grid-template-columns: max-content auto max-content;
     grid-template-areas: "logo mode nav";
   }
@@ -407,117 +413,90 @@ li.contact {
   }
 
   .main-grid {
-    margin: 0 16px;
+    width: 840px;
+    margin: 0 auto;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-areas:
-    "about about about about about about about about about profile-pic  profile-pic profile-pic"
-    "projects projects projects projects projects projects projects projects projects projects projects projects"
-    "skills skills skills skills skills skills skills skills skills skills skills skills"
-    "contact contact contact contact contact contact contact contact contact contact contact contact";
-  }
-}
-
-@media (min-width: 906px) {
-  .nav-grid {
-    padding: 0 30px;
-    grid-template-columns: max-content auto max-content;
-    grid-template-areas: "logo mode nav";
-  }
-
-  .navbar .mode {
-    justify-self: center;
-  }
-
-  .navbar .nav {
-    justify-self: end;
-  }
-
-  .main-grid {
-    margin: 0 30px;
     grid-template-areas:
     "about about about about about about about about about about profile-pic profile-pic"
     "projects projects projects projects projects projects projects projects projects projects projects projects"
     "skills skills skills skills skills skills skills skills skills skills skills skills"
     "contact contact contact contact contact contact contact contact contact contact contact contact";
   }
-}
 
-/*
-@media (max-width: 599px) {
-  .wrapper {
-    margin: 16px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas:
-      ""
-      ""
-      ""
-      "";
-  }
-  nav ul {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
-@media (min-width: 600px) {
-  .wrapper {
-    margin: 32px auto;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-areas:
-      ""
-      ""
-      ""
-      "";
-  }
-  nav ul {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
-@media (min-width: 905px) {
-  .wrapper {
+  .main-footer .copyright {
     width: 840px;
     margin: 0 auto;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-areas:
-      ""
-      ""
-      ""
-      "";
-  }
-  nav ul {
-    flex-direction: column;
   }
 }
 
 @media (min-width: 1240px) {
-  .wrapper {
-    margin: 200px auto;
+  header .navbar {
+    width: auto;
+    margin: 0 200px;
+  }
+
+  .nav-grid {
+    grid-template-columns: max-content auto max-content;
+    grid-template-areas: "logo mode nav";
+  }
+
+  .navbar .mode {
+    justify-self: center;
+  }
+
+  .navbar .nav {
+    justify-self: end;
+  }
+
+  .main-grid {
+    width: auto;
+    margin: 0 200px;
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas:
-      ""
-      ""
-      ""
-      "";
+    "about about about about about about about about about about profile-pic profile-pic"
+    "projects projects projects projects projects projects projects projects projects projects projects projects"
+    "skills skills skills skills skills skills skills skills skills skills skills skills"
+    "contact contact contact contact contact contact contact contact contact contact contact contact";
   }
-  nav ul {
-    flex-direction: column;
+
+  .main-footer .copyright {
+    width: auto;
+    margin: 0 200px;
   }
 }
 
 @media (min-width: 1440px) {
-  .wrapper {
+  header .navbar {
+    width: 1040px;
+    margin: 0 auto;
+  }
+
+  .nav-grid {
+    grid-template-columns: max-content auto max-content;
+    grid-template-areas: "logo mode nav";
+  }
+
+  .navbar .mode {
+    justify-self: center;
+  }
+
+  .navbar .nav {
+    justify-self: end;
+  }
+
+  .main-grid {
     width: 1040px;
     margin: 0 auto;
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas:
-      "header header header header header header header header header header header header"
-      "main main main main main main main main main main main main"
-      ". . . . . . . . . . . ."
-      "footer footer footer footer footer footer footer footer footer footer footer footer";
+    "about about about about about about about about about about profile-pic profile-pic"
+    "projects projects projects projects projects projects projects projects projects projects projects projects"
+    "skills skills skills skills skills skills skills skills skills skills skills skills"
+    "contact contact contact contact contact contact contact contact contact contact contact contact";
   }
-  nav ul {
-    flex-direction: column;
+
+  .main-footer .copyright {
+    width: 1040px;
+    margin: 0 auto;
   }
-}*/
+}
