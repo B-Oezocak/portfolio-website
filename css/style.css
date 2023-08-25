@@ -17,7 +17,6 @@ body {
 
 .container {
   display: grid;
-  gap: 0.5rem;
 
   padding: 0;
   margin: 0;
@@ -32,6 +31,7 @@ body {
 
 .site-grid {
   min-height: 100vh;
+
   grid-template-areas:
     "header header header header header header header header header header header header"
     "main main main main main main main main main main main main"
@@ -64,10 +64,9 @@ header {
   display: grid;
   gap: 0 0.5rem;
   
-  padding: 0 30px;
   width: 100%;
-  min-width: 750px;
-    
+
+  padding: 0 30px;
   grid-template-columns: max-content auto max-content;
   grid-template-areas: "logo mode nav";
 }
@@ -80,6 +79,7 @@ header {
   align-self: center;
 
   margin: 0;
+  padding: 1rem 0;
   color: black;
 }
 
@@ -227,7 +227,6 @@ li.contact {
 .main-grid {
   grid-area: main;
   margin: 0 30px;
-
   grid-template-areas:
   "about about about about about about about about about about profile-pic profile-pic"
   "projects projects projects projects projects projects projects projects projects projects projects projects"
@@ -286,6 +285,154 @@ li.contact {
   padding: 16px;
 }
 
+
+
+
+
+@media (max-width: 402px) {
+  .nav-grid {
+    padding: 0 16px;
+    grid-template-columns: auto;
+    grid-template-areas: 
+    "logo"
+    "mode"
+    "nav";
+
+    overflow: hidden;
+  }
+
+  .navbar .logo {
+    justify-self: center;
+  }
+
+  .navbar .mode {
+    justify-self: center;
+  }
+
+  .navbar .nav {
+    justify-self: center;
+    overflow-x: scroll;
+    box-sizing: content-box;
+  }
+
+  .main-grid {
+    margin: 0 16px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "profile-pic profile-pic profile-pic profile-pic"
+      "about about about about"
+      "projects projects projects projects"
+      "skills skills skills skills"
+      "contact contact contact contact";
+  }
+}
+
+@media (min-width: 403px) {
+  .nav-grid {
+    padding: 0 16px;
+    grid-template-columns: auto;
+    grid-template-areas: 
+    "logo mode"
+    "nav nav";
+  }
+
+  .navbar .mode {
+    justify-self: end;
+  }
+
+  .navbar .nav {
+    justify-self: center;
+  }
+
+  .main-grid {
+    margin: 0 16px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "about about profile-pic profile-pic"
+      "projects projects projects projects"
+      "skills skills skills skills"
+      "contact contact contact contact";
+  }
+}
+
+@media (min-width: 600px) {
+  .nav-grid {
+    padding: 0 16px;
+    grid-template-columns: auto;
+    grid-template-areas: 
+    "logo mode"
+    "nav nav";
+  }
+
+  .navbar .mode {
+    justify-self: end;
+  }
+
+  .navbar .nav {
+    justify-self: center;
+  }
+
+  .main-grid {
+    margin: 0 16px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas:
+    "about about about about about about  profile-pic profile-pic"
+    "projects projects projects projects projects projects projects projects"
+    "skills skills skills skills skills skills skills skills"
+    "contact contact contact contact contact contact contact contact";
+  }
+}
+
+@media (min-width: 747px) {
+  .nav-grid {
+    padding: 0 30px;
+    grid-template-columns: max-content auto max-content;
+    grid-template-areas: "logo mode nav";
+  }
+
+  .navbar .mode {
+    justify-self: center;
+  }
+
+  .navbar .nav {
+    justify-self: end;
+  }
+
+  .main-grid {
+    margin: 0 16px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+    "about about about about about about about about about profile-pic  profile-pic profile-pic"
+    "projects projects projects projects projects projects projects projects projects projects projects projects"
+    "skills skills skills skills skills skills skills skills skills skills skills skills"
+    "contact contact contact contact contact contact contact contact contact contact contact contact";
+  }
+}
+
+@media (min-width: 906px) {
+  .nav-grid {
+    padding: 0 30px;
+    grid-template-columns: max-content auto max-content;
+    grid-template-areas: "logo mode nav";
+  }
+
+  .navbar .mode {
+    justify-self: center;
+  }
+
+  .navbar .nav {
+    justify-self: end;
+  }
+
+  .main-grid {
+    margin: 0 30px;
+    grid-template-areas:
+    "about about about about about about about about about about profile-pic profile-pic"
+    "projects projects projects projects projects projects projects projects projects projects projects projects"
+    "skills skills skills skills skills skills skills skills skills skills skills skills"
+    "contact contact contact contact contact contact contact contact contact contact contact contact";
+  }
+}
 
 /*
 @media (max-width: 599px) {
