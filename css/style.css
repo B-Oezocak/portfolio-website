@@ -303,7 +303,7 @@ li.contact {
 
 @media (max-width: 599px) {
   header .navbar {
-    width: 100%;
+    width: auto;
     margin: 0 16px;
   }
 
@@ -327,12 +327,12 @@ li.contact {
 
   .navbar .nav {
     justify-self: center;
-    overflow-x: scroll;
-    box-sizing: content-box;
+    /*overflow-x: scroll;
+    box-sizing: content-box;*/
   }
 
   .main-grid {
-    width: 100%;
+    width: auto;
     margin: 0 16px;
     justify-content: center;
     grid-template-columns: repeat(4, 1fr);
@@ -345,8 +345,8 @@ li.contact {
   }
 
   .main-footer .copyright {
-    width: 100%;
-    padding: 0 16px;
+    width: auto;
+    margin: 0 16px;
   }
 }
 
