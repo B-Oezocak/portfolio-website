@@ -17,6 +17,26 @@ body {
   box-sizing: inherit;
 }
 
+.dark-mode {
+  background-color: #222 !important; 
+  color: white !important; 
+}
+
+.dark-mode .main-footer,
+.dark-mode header {
+  background-color: black !important;
+}
+
+.dark-mode .logo,
+.dark-mode .nav-item a {
+  color: white !important;
+}
+
+.dark-mode .navbar a:hover {
+  background-color: white !important;
+  color: blue !important;
+}
+
 .container {
   display: grid;
 
@@ -97,82 +117,75 @@ header {
   align-self: center;  
 }
 
-/* Settings for the button */
-.navbar .mode .button {
+/* Create parent-box for the switch to toggle between light- and dark-mode */
+.switch {
   position: relative;
-  overflow: hidden;
-  border: 1px solid black;
-  color: black;
   display: inline-block;
+  width: 40px;
+  height: 20px;
+} 
 
-  font-size: 1rem;
-  line-height: 1rem;
-  padding: 1rem;
-  text-decoration: none;
-  font-size: 1.1rem;
-
-  cursor: pointer;
-  background: #fff;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-/* Settings for the first span-element(light) of button */
-.navbar .mode .button span:first-child {
-  position: relative;
-  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
-  z-index: 10;
-}
-
-/* Settings for the last span-element(dark) of button */
-.navbar .mode .button span:last-child {
-  color: white;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
-  z-index: 100;
-  
-  /* Makes the dark-element invisible */
+/* hide the checkbox */
+.switch input {
   opacity: 0;
-  top: 50%;
-  left: 50%;
-  transform: translateY(225%) translateX(-50%);
-  height: 1rem; /*14px;*/
-  line-height: 1rem; /*13px;*/
+  width: 0;
+  height: 0;
 }
 
-/* Add additional elements after the button */
-.navbar .mode .button::after {
-  content: "";
+/* Create the actual slider */
+.slider {
   position: absolute;
-  bottom: -50%;
+  cursor: pointer;
+  top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  border-radius: 34px;
+  transition: .4s;
+}
+
+/* Make the slider round */
+.slider.round {
+  border-radius: 34px;
+}
+
+/* Create slider with rounded corners */
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Create slider-handle in form of a circle */
+.slider:before {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 0;
+  bottom: 0;
   background-color: black;
-
-  /* Define transformation */
-  transform-origin: bottom center;
-  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
-  transform: skewY(9.3deg) scaleY(0);
-  z-index: 50;
+  border-radius: 50%;
+  transition: .4s;
+  background-image: url("../img/Moon.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  content: "";
 }
 
-/* Add additional elements after the button on hover */
-.navbar .mode .button:hover::after {
-  /* Define transformation */
-  transform-origin: bottom center;
-  transform: skewY(9.3deg) scaleY(2);
+/* Change when slider is checked */
+input:checked + .slider {
+  background-color: #333;
 }
 
-/* What happens to last span-element(dark) of the button on hover */
-.navbar .mode .button:hover span:last-child {
-  /* Define transformation */
-  transform: translateX(-50%) translateY(-50%);
-  opacity: 1;
-  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+input:focus + .slider {
+  box-shadow: 0 0 2px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+  background-color: white;
+  background-image: url("../img/Sun.png");
+  background-size: 1rem;
 }
 
 /* Position nav-element in navbar */
@@ -242,6 +255,10 @@ li.contact {
   "contact contact contact contact contact contact contact contact contact contact contact contact";
 }
 
+h1.title {
+  text-decoration: underline;
+}
+
 .about {
   grid-area: about;
 }
@@ -269,6 +286,30 @@ li.contact {
   grid-area: skills;
 }
 
+ul.icons {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-self: center;
+  justify-content: left;
+  margin: 0;
+  padding: 0;
+}
+
+ul.icons li {
+  padding: 0;
+  margin: 0;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  height: 3rem;
+}
+
+ul.icons li img {
+  height: 100%;
+  width: auto;
+}
+
 .contact {
   grid-area: contact;
 }
@@ -292,8 +333,6 @@ li.contact {
   margin: 0;
   padding: 16px 0;
 }
-
-
 
 @media (prefers-reduced-motion: reduce) {
   html {
